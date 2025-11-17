@@ -1,0 +1,11 @@
+{
+  "/cashier/page": "app/cashier/page.js",
+  "/dashboard/cashier/page": "app/dashboard/cashier/page.js",
+  "/dashboard/hall/page": "app/dashboard/hall/page.js",
+  "/dashboard/kds/page": "app/dashboard/kds/page.js",
+  "/dashboard/manager/page": "app/dashboard/manager/page.js",
+  "/dashboard/menu/page": "app/dashboard/menu/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
+  "/role-select/page": "app/role-select/page.js"
+}

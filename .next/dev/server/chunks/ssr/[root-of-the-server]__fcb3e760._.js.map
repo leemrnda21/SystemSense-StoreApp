@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///D:/Downloads/SystemSense-StoreApp/app/cashier/page.tsx"],"sourcesContent":["import { redirect } from 'next/navigation'\r\n\r\nexport default function CashierRedirectPage() {\r\n  // Expose a short URL for the Cashier/POS page.\r\n  // This file intentionally does a server-side redirect to the existing\r\n  // App Router page at /dashboard/cashier so we don't change any UI.\r\n  redirect('/dashboard/cashier')\r\n}\r\n"],"names":[],"mappings":";;;;AAAA;AAAA;;AAEe,SAAS;IACtB,+CAA+C;IAC/C,sEAAsE;IACtE,mEAAmE;IACnE,IAAA,iMAAQ,EAAC;AACX"}}]
+}
