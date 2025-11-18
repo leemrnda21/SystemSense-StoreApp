@@ -1,4 +1,8 @@
-[00:00:01.325] Server  LOG      ✓ Ready in 860ms
-[00:00:06.158] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:32.547] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:34.094] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:15.133] Server  LOG      ✓ Ready in 12.1s
+[00:00:18.230] Server  LOG      ○ Compiling / ...
+[00:00:32.562] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:32.634] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:32.700] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:22.709] Browser LOG     [v0] Order #0123 moved to cooking
+[00:23:27.468] Browser LOG     [v0] Order #0123 moved to cooking
+[00:23:28.438] Browser LOG     [v0] Order #0123 moved to cooking
