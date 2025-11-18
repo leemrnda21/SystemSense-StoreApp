@@ -4,6 +4,11 @@ import { CommonHeader } from '@/components/common-header'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import Link from 'next/link'
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@/components/ui/table'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Plus, Edit2, Trash2 } from 'lucide-react'
 
 const salesData = [
   { time: 'Lunch', sales: 18500, orders: 45 },
@@ -116,6 +121,59 @@ export default function ManagerPage() {
             </Card>
           </TabsContent>
         </Tabs>
+
+        {/* Menu Management Section */}
+        <Card>
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle>Menu Management</CardTitle>
+              <div className="flex items-center gap-2">
+                <Input placeholder="Search menu..." className="w-64" />
+                <Link href="/dashboard/menu">
+                  <Button size="sm" className="bg-emerald-600">
+                    <Plus className="w-4 h-4 mr-2" />
+                    Manage
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Product Name</TableHead>
+                    <TableHead>Category</TableHead>
+                    <TableHead className="text-right">Price</TableHead>
+                    <TableHead className="text-right">Status</TableHead>
+                    <TableHead className="text-center">Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {[
+                    { id: 1, name: 'Fried Chicken Set', category: 'Set Meal', price: 280, status: 'selling' },
+                    { id: 2, name: 'Pork Grilled Set', category: 'Set Meal', price: 260, status: 'selling' },
+                    { id: 3, name: 'Squid Stir-Fry Set', category: 'Set Meal', price: 240, status: 'sold_out' },
+                  ].map((item) => (
+                    <TableRow key={item.id}>
+                      <TableCell className="font-medium">{item.name}</TableCell>
+                      <TableCell>{item.category}</TableCell>
+                      <TableCell className="text-right">{item.price} THB</TableCell>
+                      <TableCell className="text-right">{item.status === 'sold_out' ? 'Sold Out' : 'Selling'}</TableCell>
+                      <TableCell className="text-center">
+                        <div className="flex items-center justify-center gap-2">
+                          <Button variant="ghost" size="sm"><Edit2 className="w-4 h-4"/></Button>
+                          <Button variant="ghost" size="sm"><Trash2 className="w-4 h-4 text-red-500"/></Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   )

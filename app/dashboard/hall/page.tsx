@@ -11,29 +11,37 @@ import { TableCard } from '@/components/table-card'
 import { CustomerCallModal } from '@/components/customer-call-modal'
 import { TableDetailModal } from '@/components/table-detail-modal'
 
-const initialTables = [
-  { number: 'T-01', capacity: 4, status: 'empty' as const },
-  { number: 'T-02', capacity: 2, status: 'calling' as const, orderNumber: '#0123', waitTime: '25 mins' },
-  { number: 'T-03', capacity: 4, status: 'occupied' as const, orderNumber: '#0121', waitTime: '2 mins' },
-  { number: 'T-04', capacity: 6, status: 'empty' as const },
-  { number: 'T-05', capacity: 4, status: 'empty' as const },
-  { number: 'T-06', capacity: 2, status: 'occupied' as const, orderNumber: '#0125', waitTime: '12 mins' },
-  { number: 'T-07', capacity: 4, status: 'empty' as const },
-  { number: 'T-08', capacity: 8, status: 'occupied' as const, orderNumber: '#0126', waitTime: '8 mins' },
-  { number: 'T-09', capacity: 2, status: 'empty' as const },
-  { number: 'T-10', capacity: 6, status: 'occupied' as const, orderNumber: '#0127', waitTime: '18 mins' },
-  { number: 'T-11', capacity: 4, status: 'empty' as const },
-  { number: 'T-12', capacity: 4, status: 'occupied' as const, orderNumber: '#0128', waitTime: '4 mins' },
-  { number: 'T-13', capacity: 2, status: 'empty' as const },
-  { number: 'Private-A', capacity: 10, status: 'occupied' as const, orderNumber: '#0129', waitTime: '20 mins' },
+type TableInfo = {
+  number: string
+  capacity: number
+  status: 'empty' | 'calling' | 'occupied' | 'ordering' | 'cleaning' | 'reserved'
+  orderNumber?: string
+  waitTime?: string
+}
+
+const initialTables: TableInfo[] = [
+  { number: 'T-01', capacity: 4, status: 'empty' },
+  { number: 'T-02', capacity: 2, status: 'calling', orderNumber: '#0123', waitTime: '25 mins' },
+  { number: 'T-03', capacity: 4, status: 'occupied', orderNumber: '#0121', waitTime: '2 mins' },
+  { number: 'T-04', capacity: 6, status: 'empty' },
+  { number: 'T-05', capacity: 4, status: 'empty' },
+  { number: 'T-06', capacity: 2, status: 'occupied', orderNumber: '#0125', waitTime: '12 mins' },
+  { number: 'T-07', capacity: 4, status: 'empty' },
+  { number: 'T-08', capacity: 8, status: 'occupied', orderNumber: '#0126', waitTime: '8 mins' },
+  { number: 'T-09', capacity: 2, status: 'empty' },
+  { number: 'T-10', capacity: 6, status: 'occupied', orderNumber: '#0127', waitTime: '18 mins' },
+  { number: 'T-11', capacity: 4, status: 'empty' },
+  { number: 'T-12', capacity: 4, status: 'occupied', orderNumber: '#0128', waitTime: '4 mins' },
+  { number: 'T-13', capacity: 2, status: 'empty' },
+  { number: 'Private-A', capacity: 10, status: 'occupied', orderNumber: '#0129', waitTime: '20 mins' },
 ]
 
 export default function HallPage() {
   const [activeTab, setActiveTab] = useState('all')
-  const [selectedTable, setSelectedTable] = useState<typeof initialTables[0] | null>(null)
+  const [selectedTable, setSelectedTable] = useState<TableInfo | null>(null)
   const [showCallModal, setShowCallModal] = useState(false)
   const [showDetailModal, setShowDetailModal] = useState(false)
-  const [tables, setTables] = useState(initialTables)
+  const [tables, setTables] = useState<TableInfo[]>(initialTables)
   const [showAddTableModal, setShowAddTableModal] = useState(false)
   const [showNewOrderModal, setShowNewOrderModal] = useState(false)
 
@@ -157,7 +165,7 @@ export default function HallPage() {
                   <TableCard
                     tableNumber={table.number}
                     capacity={table.capacity}
-                    status={table.status}
+                    status={table.status as any}
                     orderNumber={table.orderNumber}
                     waitTime={table.waitTime}
                   />

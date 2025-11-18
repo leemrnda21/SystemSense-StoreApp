@@ -7,8 +7,9 @@ import { CommonHeader } from '@/components/common-header'
 import AccountingView from '@/components/cashier/accounting-view'
 import PaymentMethodSelector from '@/components/cashier/payment-method-selector'
 import ReceiptView from '@/components/cashier/receipt-view'
+import OrderReview from '@/components/cashier/order-review'
 
-type CashierStep = 'accounting' | 'payment' | 'receipt'
+type CashierStep = 'accounting' | 'review' | 'payment' | 'receipt'
 
 export default function CashierPage() {
   const [step, setStep] = useState<CashierStep>('accounting')
@@ -24,7 +25,8 @@ export default function CashierPage() {
     if (items) {
       setTableItems(items)
     }
-    setStep('payment')
+    // Show order review before payment so cashier can confirm
+    setStep('review')
   }
 
   const handlePaymentComplete = (method: string, receivedAmount?: number) => {
@@ -56,16 +58,27 @@ export default function CashierPage() {
         {step === 'accounting' && (
           <AccountingView onTableSelect={handleTableSelect} />
         )}
-        
+
+        {step === 'review' && selectedTable && (
+          <OrderReview
+            tableId={selectedTable}
+            items={tableItems}
+            amount={totalAmount}
+            onBack={() => setStep('accounting')}
+            onEdit={() => setStep('accounting')}
+            onProceed={() => setStep('payment')}
+          />
+        )}
+
         {step === 'payment' && selectedTable && (
           <PaymentMethodSelector
             tableId={selectedTable}
             amount={totalAmount}
             onPaymentComplete={handlePaymentComplete}
-            onBack={() => setStep('accounting')}
+            onBack={() => setStep('review')}
           />
         )}
-        
+
         {step === 'receipt' && (
           <ReceiptView
             tableId={selectedTable!}

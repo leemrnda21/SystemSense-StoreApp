@@ -14,6 +14,7 @@ import {
 interface CommonHeaderProps {
   title: string
   subtitle?: string
+  role?: string
 }
 
 export function CommonHeader({ title, subtitle }: CommonHeaderProps) {

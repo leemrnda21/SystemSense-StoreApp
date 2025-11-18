@@ -9,7 +9,20 @@ import { Clock, AlertCircle } from 'lucide-react'
 import { OrderDetailModal } from '@/components/order-detail-modal'
 import { KDSSettingsPanel } from '@/components/kds-settings-panel'
 
-const initialKdsOrders = [
+type KdsItem = { name: string; qty: number; note?: string }
+
+type KdsOrder = {
+  id: string
+  table: string
+  elapsedTime: string
+  status: 'urgent' | 'cooking' | 'ready'
+  items: KdsItem[]
+  warning?: string
+  estimatedTime?: string
+  note?: string
+}
+
+const initialKdsOrders: KdsOrder[] = [
   {
     id: '#0123',
     table: 'T-05',

@@ -1,10 +1,10 @@
-'use client'
+ 'use client'
 
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useStore } from '@/lib/store'
-import { UserCog, ChefHat, Users, LogOut } from 'lucide-react'
+import { UserCog, ChefHat, Users, LogOut, CreditCard, UserPlus } from 'lucide-react'
 
 const roles = [
   {
@@ -29,6 +29,20 @@ const roles = [
     icon: ChefHat,
     color: 'bg-orange-100 text-orange-600',
   },
+  {
+    id: 'cashier',
+    name: 'Cashier',
+    description: 'POS / Payment Processing',
+    icon: CreditCard,
+    color: 'bg-amber-100 text-amber-600',
+  },
+  {
+    id: 'staff',
+    name: 'Staff',
+    description: 'Staff Management & Info',
+    icon: UserPlus,
+    color: 'bg-sky-100 text-sky-600',
+  },
 ]
 
 export default function RoleSelectPage() {
@@ -41,6 +55,8 @@ export default function RoleSelectPage() {
       
       if (roleId === 'hall') router.push('/dashboard/hall')
       else if (roleId === 'kitchen') router.push('/dashboard/kds')
+      else if (roleId === 'cashier') router.push('/dashboard/cashier')
+      else if (roleId === 'staff') router.push('/dashboard/staff')
       else router.push('/dashboard/manager')
     }
   }
