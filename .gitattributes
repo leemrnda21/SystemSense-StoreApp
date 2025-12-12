@@ -1,0 +1,8 @@
+# Force GitHub to recognize TypeScript
+*.ts linguist-language=TypeScript
+*.tsx linguist-language=TypeScript
+
+# Exclude config files from language stats
+*.mjs linguist-vendored
+*.cjs linguist-vendored
+postcss.config.* linguist-vendored

@@ -1,6 +1,0 @@
-{
-  "/dashboard/kds/page": "app/dashboard/kds/page.js",
-  "/login/page": "app/login/page.js",
-  "/page": "app/page.js",
-  "/role-select/page": "app/role-select/page.js"
-}
